@@ -2,14 +2,17 @@
 
 $offers = array_map('str_getcsv', file('offers.csv'));
 $profiles = array_map('str_getcsv', file('profiles.csv'));
+
 $output=[];
-$personcounter=1;
 $output2=[];
 
+$personcounter=1;
+
+
+
+//PARSES CSV FILES AND FILLS VARIABLE OUTPUT
+//Each array in output represents a person.  Each person has a number of arrays structured as [offer_name, price] for every offer that should be shown to them
 foreach ($profiles as $row){
-	// print_r("PERSON ");
-	// print_r($personcounter);
-	// print_r("</br>");
 	$output[$personcounter]=array();
 	
 	foreach($offers as $row2){
@@ -17,9 +20,6 @@ foreach ($profiles as $row){
 			if (($row[0]=='F' && $row2[3]=='TRUE') || ($row[0]=='M' && $row2[2]=='TRUE')){
 				$age=$row[1];
 				if ((18<=$age && $age<=25 && $row2[4]=='TRUE')||(26<=$age && $age<=35 && $row2[5]=='TRUE')||(36<=$age && $age<=45 && $row2[6]=='TRUE')||(46<=$age && $row2[7]=='TRUE')){
-					// print_r("Show deal ");
-					// print_r($row2[0]);
-					// print_r("</br>");
 					$dealprice=[$row2[0], $row2[1]];
 					array_push($output[$personcounter], $dealprice);
 				}
@@ -30,24 +30,9 @@ foreach ($profiles as $row){
 	$personcounter++;
 }
 
-// foreach($output as $person){
-	// highest=0;
-	// while (!empty($person)){
-		// foreach($person as $deal){
 
-		// }
-	// }
-// }
-
-//$output[person]=[Deal letter, price]
-
-// $counter=0;
-// foreach($output as $person){
-	// foreach ($person as $deal){
-		// $output2[counter]
-	// }
-// }
-
+//PARSES THE OUTPUT AND CREATES A NEW SORTED ARRAY OUTPUT2
+//output2 has the same structure as output, but the [offer_name, price] arrays are sorted by price in decending order.
 $counter=1;
 foreach($output as $person){
 	foreach($person as $deal){
@@ -75,6 +60,7 @@ foreach($output as $person){
 }
 
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
