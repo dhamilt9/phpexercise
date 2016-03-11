@@ -23,7 +23,6 @@ foreach ($profiles as $row){
 					$dealprice=[$row2[0], $row2[1]];
 					array_push($output[$personcounter], $dealprice);
 				}
-			}else{
 			}
 		}
 	}
