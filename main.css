@@ -1,0 +1,18 @@
+.offerblock{
+	margin-right:10px;
+	margin-bottom:10px;
+	padding:10px;
+	border:1px solid black;
+	text-align:center;
+	margin-right:auto;
+	width:10%;
+}
+
+.title{
+	border-bottom:1px solid black;
+}
+
+.body{
+	text-align:left;
+}
+
